@@ -8,12 +8,14 @@
     ".NETCoreApp,Version=v3.0": {
       "Life/1.0.0": {
         "dependencies": {
+          "Microsoft.TestPlatform": "17.1.0",
           "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
           "Life.dll": {}
         }
       },
+      "Microsoft.TestPlatform/17.1.0": {},
       "Newtonsoft.Json/13.0.1": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
@@ -29,6 +31,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Microsoft.TestPlatform/17.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lifqbWiMdWWVUNF/c3OZ2ECmQ3AeYsK30ib1DB3wKnCmYa646SXY6uxsdAA6qHDA3dN1C5sDAzOJA8WNe3XnHg==",
+      "path": "microsoft.testplatform/17.1.0",
+      "hashPath": "microsoft.testplatform.17.1.0.nupkg.sha512"
     },
     "Newtonsoft.Json/13.0.1": {
       "type": "package",

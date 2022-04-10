@@ -11,5 +11,5 @@ D:\универ\mod-lab04-life\cod\Life\obj\Debug\netcoreapp3.0\Life.dll
 D:\универ\mod-lab04-life\cod\Life\obj\Debug\netcoreapp3.0\Life.pdb
 D:\универ\mod-lab04-life\cod\Life\obj\Debug\netcoreapp3.0\Life.genruntimeconfig.cache
 D:\универ\mod-lab04-life\cod\Life\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
-D:\универ\mod-lab04-life\cod\Life\obj\Debug\netcoreapp3.0\Life.csproj.CoreCompileInputs.cache
 D:\универ\mod-lab04-life\cod\Life\obj\Debug\netcoreapp3.0\Life.csproj.CopyComplete
+D:\универ\mod-lab04-life\cod\Life\obj\Debug\netcoreapp3.0\Life.csproj.CoreCompileInputs.cache

@@ -290,6 +290,65 @@ namespace cli_life
             }
             return true;
         }
+
+
+
+        public void OpenFile(string path)
+        {
+            using (StreamReader reader = new StreamReader(path))
+            {
+                int r = Int32.Parse(reader.ReadLine());
+                int c = Int32.Parse(reader.ReadLine());
+
+                for (int row = 0; row < r; row++)
+                {
+                    string str = reader.ReadLine();
+                    int i = 0;
+                    foreach (char s in str)
+                    {
+                        if (s == '*')
+                        {
+                            Cells[i, row].IsAlive = true;
+                            Console.Write('*');
+                        }
+                        else
+                        {
+                            Console.Write(' ');
+                            Cells[i, row].IsAlive = false;
+                        }
+                        i++;
+                    }
+                    Console.Write('\n');
+                }
+
+            }
+        }
+
+        public void SaveSystem(string path)
+        {
+            File.WriteAllText(path, string.Empty);
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
+                writer.WriteLine(Rows);
+                writer.WriteLine(Columns);
+                for (int row = 0; row < Rows; row++)
+                {
+                    for (int col = 0; col < Columns; col++)
+                    {
+                        var cell = Cells[col, row];
+                        if (cell.IsAlive)
+                        {
+                            writer.Write('*');
+                        }
+                        else
+                        {
+                            writer.Write(' ');
+                        }
+                    }
+                    writer.Write('\n');
+                }
+            }
+        }
     }
     class Program
     {
@@ -318,70 +377,13 @@ namespace cli_life
             }
         }
 
-        static void SaveSystem(Board board, string path)
-        {
-            File.WriteAllText(path, string.Empty);
-            using (StreamWriter writer = new StreamWriter(path, true))
-            {
-                writer.WriteLine(board.Rows);
-                writer.WriteLine(board.Columns);
-                for (int row = 0; row < board.Rows; row++)
-                {
-                    for (int col = 0; col < board.Columns; col++)
-                    {
-                        var cell = board.Cells[col, row];
-                        if (cell.IsAlive)
-                        {
-                            writer.Write('*');
-                        }
-                        else
-                        {
-                            writer.Write(' ');
-                        }
-                    }
-                    writer.Write('\n');
-                }
-            }
-        }
-
-        static void OpenFile(string path)
-        {
-            using (StreamReader reader = new StreamReader(path))
-            {
-                int r = Int32.Parse(reader.ReadLine());
-                int c = Int32.Parse(reader.ReadLine());
-
-                for (int row = 0; row < r; row++)
-                {
-                    string str = reader.ReadLine();
-                    int i = 0;
-                    foreach ( char s in str)
-                    {
-                        if (s == '*')
-                        {
-                            board.Cells[i, row].IsAlive = true;
-                            Console.Write('*');
-                        }
-                        else
-                        {
-                            Console.Write(' ');
-                            board.Cells[i, row].IsAlive = false;
-                        }
-                        i++;
-                    }
-                    Console.Write('\n');
-                }
-
-            }
-        }
-
         static void Main(string[] args)
         {
             int stopParametr = 5;
             int i = 0;
             int stableTime = 0;
             Reset();
-            OpenFile("colonies/second.txt");
+            board.OpenFile("colonies/second.txt");
             //OpenFile("standard_figures/hive.txt");
             while (stopParametr > i)
             {
