@@ -7,92 +7,86 @@ namespace NET
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void ReadingFile()
         {
-            String s = "0111";
-            FA1 fa = new FA1();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == true);
+            String s ="    **    "
+            Reset();
+            OpenFile("standard_figures/block.txt");
+            String res = "";
+            for (int row = 0; row < board.Rows; row++)
+            {
+                var cell = board.Cells[0, row];
+                if (cell.IsAlive)
+                {
+                    s+='*';
+                }
+                else
+                {
+                    s+=' ';
+                }
+            }
+            Assert.IsTrue(res == s);
         }
         [TestMethod]
-        public void TestMethod2()
+        public void CheckParams()
         {
-            String s = "01011";
-            FA1 fa = new FA1();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == false);
+            Reset();
+            int width = board.width;
+            Assert.IsTrue(width == 10); 
         }   
         [TestMethod]
-        public void TestMethod3()
+        public void FindShip()
         {
-            String s = "110101011";
-            FA1 fa = new FA1();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == false);
+            String s = " ship";
+            Reset();
+            OpenFile("standard_figures/ship.txt");
+            String res= board.findShip()
+            Assert.IsTrue( res == s);
         }  
         [TestMethod]
-        public void TestMethod4()
+        public void CountAliveCells()
         {
-            String s = "1110111";
-            FA1 fa = new FA1();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == true);
+            Reset();
+            OpenFile("standard_figures/box.txt");
+            int count = board.countAliveCells();
+            Assert.IsTrue(count == 4);
         }  
         [TestMethod]
-        public void TestMethod5()
+        public void FindFigures()
         {
-            String s = "10";
-            FA1 fa = new FA1();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == true);
+            String s = " box hive boat"
+            Reset();
+            OpenFile("colonies/second.txt");
+            String res = board.findBlock() + board.findBox() + board.findHive() + board.findBoat() + board.findShip();
+            Assert.IsTrue(res == s);
         } 
         [TestMethod]
-        public void TestMethod6()
+        public void ComeToStablePhase()
         {
-            String s = "0101";
-            FA2 fa = new FA2();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == false);
+            int stopParametr = 5;
+            int i = 0;
+            int stableTime = 0;
+            Reset();
+            OpenFile("colonies/first.txt");
+            while (stopParametr > i)
+            {
+                int bTime = board.countAliveCells();
+                board.Advance();
+                i++;
+                stableTime = board.becomeStablePhase(bTime, stableTime);
+            }
+            Assert.IsTrue(stableTime == 5);
         }  
         [TestMethod]
-        public void TestMethod7()
+        public void hasHorizontalSymmetry()
         {
-            String s = "00110011";
-            FA2 fa = new FA2();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == false);
+            Reset();
+            OpenFile("colonies/block.txt");
+            bool res = board.hasHorizontalSymmetry()
+            Assert.IsTrue(res == true);
         }  
-        [TestMethod]
-        public void TestMethod8()
-        {
-            String s = "0001";
-            FA2 fa = new FA2();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == true);
-        }  
-        [TestMethod]
-        public void TestMethod9()
-        {
-            String s = "111000";
-            FA2 fa = new FA2();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == true);
-        } 
-        [TestMethod]
-        public void TestMethod10()
-        {
-            String s = "00110011";
-            FA3 fa = new FA3();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == true);
-        }
-        [TestMethod]
-        public void TestMethod11()
-        {
-            String s = "0101";
-            FA3 fa = new FA3();
-            bool? result = fa.Run(s);
-            Assert.IsTrue(result == false);
-        }     
+        //добавить метод с выстрелом ружья
+
+        
     }
 }
