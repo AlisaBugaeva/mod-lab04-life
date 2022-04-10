@@ -21,11 +21,11 @@ namespace UnitTestLife
                 var cell = board.Cells[0, row];
                 if (cell.IsAlive)
                 {
-                    s += '*';
+                    res += '*';
                 }
                 else
                 {
-                    s += ' ';
+                    res += ' ';
                 }
             }
             Assert.IsTrue(res == s);
@@ -88,7 +88,6 @@ namespace UnitTestLife
             bool res = board.hasHorizontalSymmetry();
             Assert.IsTrue(res == true);
         }
-        //добавить метод с выстрелом ружья
 
 
     }
