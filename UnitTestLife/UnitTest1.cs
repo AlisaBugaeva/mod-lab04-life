@@ -50,9 +50,9 @@ namespace UnitTestLife
         public void CountAliveCells()
         {
             Board board = JsonConvert.DeserializeObject<Board>(File.ReadAllText("data.json"));
-            board.OpenFile("standard_figures/box.txt");
+            board.OpenFile("standard_figures/hive.txt");
             int count = board.countAliveCells();
-            Assert.IsTrue(count == 4);
+            Assert.IsTrue(count == 6);
         }
         [TestMethod]
         public void FindFigures()
@@ -84,7 +84,7 @@ namespace UnitTestLife
         public void hasHorizontalSymmetry()
         {
             Board board = JsonConvert.DeserializeObject<Board>(File.ReadAllText("data.json"));
-            board.OpenFile("colonies/block.txt");
+            board.OpenFile("standard_figures/block.txt");
             bool res = board.hasHorizontalSymmetry();
             Assert.IsTrue(res == true);
         }
